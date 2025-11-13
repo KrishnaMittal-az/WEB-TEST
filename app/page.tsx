@@ -5,7 +5,10 @@ import type { Product } from "../types";
 
 export default async function Home() {
   const products: Product[] = await fetchProducts();
-  const categories = await fetchCategories();
+  const categoriesFetched = await fetchCategories();
+  const categories = categoriesFetched.length
+    ? categoriesFetched
+    : Array.from(new Set(products.map((p) => p.category)));
 
   return (
     <main>
