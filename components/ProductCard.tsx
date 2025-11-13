@@ -5,16 +5,25 @@ import type { Product } from "../types";
 
 export default function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void }) {
   return (
-    <article className="bg-white rounded-lg shadow p-3 hover:shadow-md transition-shadow cursor-pointer" onClick={onOpen} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter') onOpen(); }}>
-      <div className="h-40 flex items-center justify-center mb-3">
+    <article className="bg-white rounded-lg shadow flex flex-col hover:shadow-md transition-shadow">
+      <button
+        className="text-left p-3 flex-1"
+        onClick={onOpen}
+        aria-label={`Open details for ${product.title}`}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') onOpen();
+        }}
+      >
+      <div className="h-44 flex items-center justify-center mb-3">
         <img src={product.image} alt={product.title} className="max-h-36 object-contain" />
       </div>
-      <h3 className="text-sm font-medium line-clamp-2 mb-1">{product.title}</h3>
-      <div className="flex items-center justify-between text-sm">
-        <div className="font-semibold">${product.price.toFixed(2)}</div>
-        <div className="text-xs text-gray-500 px-2 py-0.5 bg-gray-100 rounded">{product.category}</div>
+      <h3 className="text-sm font-medium line-clamp-2 mb-2 text-center">{product.title}</h3>
+      <div className="text-center text-xs text-gray-600 mb-3">${product.price.toFixed(2)} USD</div>
+      {product.rating && <div className="text-center text-xs text-yellow-600 mb-2">⭐ {product.rating.rate}</div>}
+      </button>
+      <div className="p-3 pt-0">
+        <button onClick={onOpen} className="w-full bg-black text-white rounded-md py-2 text-sm">View Details</button>
       </div>
-      {product.rating && <div className="mt-2 text-xs text-yellow-600">⭐ {product.rating.rate}</div>}
     </article>
   );
 }

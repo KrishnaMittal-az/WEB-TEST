@@ -2,7 +2,13 @@
 
 import React from "react";
 
-export default function CategoryFilter({ categories, value, onChange }: { categories: string[]; value: string | null; onChange: (v: string | null) => void }) {
+type Props = {
+  categories: string[];
+  value: string | null;
+  onChange: (value: string | null) => void;
+};
+
+export default function CategoryFilter({ categories, value, onChange }: Props) {
   return (
     <select
       value={value ?? ""}

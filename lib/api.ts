@@ -1,8 +1,9 @@
+/* eslint-disable no-undef */
 import type { Product } from "../types";
 
 const BASE = "https://fakestoreapi.com";
 
-type NextFetchOptions = RequestInit & { next?: { revalidate?: number } };
+type NextFetchOptions = globalThis.RequestInit & { next?: { revalidate?: number } };
 
 async function fetchJson<T>(path: string, options?: NextFetchOptions): Promise<T> {
   const res = await fetch(`${BASE}${path}`, options);

@@ -2,7 +2,12 @@
 
 import React from "react";
 
-export default function SearchBar({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+type Props = {
+  value: string;
+  onChange: (value: string) => void;
+};
+
+export default function SearchBar({ value, onChange }: Props) {
   return (
     <label className="flex items-center bg-white rounded-md shadow px-2 py-1">
       <span className="sr-only">Search</span>

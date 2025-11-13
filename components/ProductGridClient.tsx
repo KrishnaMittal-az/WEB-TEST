@@ -54,7 +54,11 @@ export default function ProductGridClient({ products, categories }: { products: 
       <aside className="lg:col-span-1">
         <div className="json-box p-4 h-[60vh] overflow-auto">
           <h3 className="text-sm font-medium mb-2">Raw API JSON</h3>
-          {showJson ? <JsonViewer data={products} /> : <div className="text-sm text-gray-300">Collapsed — click "Raw API JSON"</div>}
+          {showJson ? (
+            <JsonViewer data={products} />
+          ) : (
+            <div className="text-sm text-gray-300">Collapsed — click “Raw API JSON”</div>
+          )}
         </div>
       </aside>
 
