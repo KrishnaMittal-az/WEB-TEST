@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import type { Product } from "../types";
 
 export default function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void }) {
@@ -14,8 +15,8 @@ export default function ProductCard({ product, onOpen }: { product: Product; onO
           if (e.key === 'Enter') onOpen();
         }}
       >
-      <div className="h-44 flex items-center justify-center mb-3">
-        <img src={product.image} alt={product.title} className="max-h-36 object-contain" />
+      <div className="relative h-44 mb-3">
+        <Image src={product.image} alt={product.title} fill sizes="(max-width: 768px) 100vw, 25vw" className="object-contain" />
       </div>
       <h3 className="text-sm font-medium line-clamp-2 mb-2 text-center">{product.title}</h3>
       <div className="text-center text-xs text-gray-600 mb-3">${product.price.toFixed(2)} USD</div>

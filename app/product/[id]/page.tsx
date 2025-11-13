@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { fetchProductById } from "../../../lib/api";
 import type { Product } from "../../../types";
@@ -14,7 +15,9 @@ export default async function ProductPage({ params }: Params) {
     <div className="bg-white rounded-lg shadow p-6">
       <div className="flex flex-col md:flex-row gap-6">
         <div className="flex-shrink-0 md:w-1/3">
-          <img src={product.image} alt={product.title} className="w-full h-auto object-contain" />
+          <div className="relative w-full h-72">
+            <Image src={product.image} alt={product.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain" />
+          </div>
         </div>
         <div>
           <h2 className="text-xl font-semibold mb-2">{product.title}</h2>
